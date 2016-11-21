@@ -1,5 +1,9 @@
+1) Obtenir un client_id et secret_id auprès de FranceConnect (https://franceconnect.gouv.fr/inscription)
 
+2) Adapter LocalSettings.php avec vos client_id, secret_id et url_callback dans le fichier LocalSettings.php
 
-1. copier LocalSetting-example.php vers LocalSettings.php
+   url_callback correspond à l'URL sur lequel vous déployez l'exmple, suivi de callback.php
 
-2. Configurer client_id, secret_id et url_callback dans le fihcier LocalSettings.php
+   Par exemple, si vous déployez dans http://localhost/exemple_fc, l'url de callback doit être http://localhost/exemple_fc/callback.php
+
+3) Ajouter cette URL de callback dans FranceConnect (https://franceconnect.gouv.fr/client/login)
