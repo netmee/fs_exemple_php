@@ -16,10 +16,14 @@
 #    along with this example.  If not, see <http://www.gnu.org/licenses/>.
 
 <?php
+/* URL de base de l'API France Connect */
+$france_connect_base_url = "https://fcp.integ01.dev-franceconnect.fr/api/v1/";
 
-require_once("init.php");
+/* Client ID */
+$client_id = "";
 
-$sup_scope = array("revenu_fiscal_de_reference","attestation_droit","adresse_postale");
-//$sup_scope = array();
-$franceConnect->authenticationRedirect($url_callback,$sup_scope);
+/* Secret ID */
+$secret_id = "";
 
+/* URL vers laquel est redirigé l'utilisateur après le login France Connect */
+$url_callback = "";
