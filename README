@@ -1,0 +1,11 @@
+Exemple d'intégration de FranceConnect en PHP
+
+L'exemple inclut une librairie qui peut servir à intégrer FranceConnect dans une application basée sur un framework.
+
+Vous êtes invités à publier à votre tour le code que vous réaliserez pour votre intégration de FranceConnect, et à nous en communiquer le lien à l'adresse support@franceconnect.gouv.fr
+
+License : GPLv3
+
+Note: Nos exemples de code proviennent d'intégrateurs comme vous. Nous publions ces exemples pour vous aider à démarrer, mais ils ne sont pas nécessairement complets, ni corrects.
+
+Statut de cet exemple au 21/11/2016: Intégration fonctionnelle (connexion et déconnexion). Attention à l'utilisation de mt_rand dans FranceConnect.class.php, qu'il faudrait remplacer par un appel à la fonction random_bytes pour plus de sécurité.
