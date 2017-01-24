@@ -1,3 +1,4 @@
+<?php
 #    This file is part of the PHP example for FranceConnect
 #
 #    Copyright (C) 2015-2016 Eric Pommateau, Maxime Reyrolle, Arnaud Bétrémieux
@@ -15,7 +16,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this example.  If not, see <http://www.gnu.org/licenses/>.
 
-<?php
 class CurlWrapper {
 	
 	const POST_DATA_SEPARATOR = "\r\n";
@@ -68,7 +68,6 @@ class CurlWrapper {
 	
 	public function setServerCertificate($serverCertificate){
 		$this->setProperties( CURLOPT_CAINFO ,$serverCertificate ); 
-		$this->setProperties(CURLOPT_SSL_VERIFYPEER, 0);
 	}
 	
 	public function setClientCertificate($clientCertificate,$clientKey,$clientKeyPassword)	{

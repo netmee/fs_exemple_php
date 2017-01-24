@@ -1,9 +1,11 @@
 1) Obtenir un client_id et secret_id auprès de FranceConnect (https://franceconnect.gouv.fr/inscription)
 
-2) Adapter LocalSettings.php avec vos client_id, secret_id et url_callback dans le fichier LocalSettings.php
+2) Adapter LocalSettings.php avec vos client_id, client_secret et url_callback dans le fichier LocalSettings.php
 
    url_callback correspond à l'URL sur lequel vous déployez l'exmple, suivi de callback.php
 
    Par exemple, si vous déployez dans http://localhost/exemple_fc, l'url de callback doit être http://localhost/exemple_fc/callback.php
 
 3) Ajouter cette URL de callback dans FranceConnect (https://franceconnect.gouv.fr/client/login)
+
+4) Ajuster les "scopes" qui vous intéressent dans authentication.php. Si vous n'avez pas besoin de scopes additionnels, vous pouvez ne pas passer l'argument "sup_scope" dans l'appel à authenticationRedirect

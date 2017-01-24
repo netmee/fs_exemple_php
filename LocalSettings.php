@@ -1,3 +1,4 @@
+<?php
 #    This file is part of the PHP example for FranceConnect
 #
 #    Copyright (C) 2015-2016 Eric Pommateau, Maxime Reyrolle, Arnaud Bétrémieux
@@ -15,15 +16,14 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this example.  If not, see <http://www.gnu.org/licenses/>.
 
-<?php
 /* URL de base de l'API France Connect */
 $france_connect_base_url = "https://fcp.integ01.dev-franceconnect.fr/api/v1/";
 
 /* Client ID */
-$client_id = "";
+$client_id = "A REMPLIR";
 
 /* Secret ID */
-$secret_id = "";
+$client_secret = "A REMPLIR";
 
 /* URL vers laquel est redirigé l'utilisateur après le login France Connect */
-$url_callback = "";
+$url_callback = "http://localhost:2020/callback.php";

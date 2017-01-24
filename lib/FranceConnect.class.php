@@ -1,3 +1,4 @@
+<?php
 #    This file is part of the PHP example for FranceConnect
 #
 #    Copyright (C) 2015-2016 Eric Pommateau, Maxime Reyrolle, Arnaud Bétrémieux
@@ -15,18 +16,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this example.  If not, see <http://www.gnu.org/licenses/>.
 
-<?php
-/*
- * Documentation France Connect
- * http://doc.integ01.dev-franceconnect.fr/integration-fs/
- * 
- *  Inscription Fournisseur de service :
- *  https://docs.google.com/a/octo.com/forms/d/1WqN-QplQofw-5QMG_DYh3IY2Na7pPOAw9wAfYW0WH3E/viewform
- *  
- * 
- */
-
-
 class FranceConnect {
 	
 	const OPENID_SESSION_TOKEN = "open_id_session_token";
@@ -34,13 +23,13 @@ class FranceConnect {
 	
 	private $france_connect_base_url;
 	private $client_id;
-	private $secret_id;
+	private $client_secret;
 	private $url_callback;
 	
-	public function __construct($france_connect_base_url,$client_id,$secret_id, $url_callback){
+	public function __construct($france_connect_base_url,$client_id,$client_secret, $url_callback){
 		$this->france_connect_base_url = $france_connect_base_url;
 		$this->client_id = $client_id;
-		$this->secret_id = $secret_id;
+		$this->client_secret = $client_secret;
 		$this->url_callback = $url_callback;
 	}
 	
@@ -103,13 +92,14 @@ class FranceConnect {
 	
 	private function getAccessToken($code){
 		$curlWrapper = new CurlWrapper();
+		$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
 		
 		$post_data = array(
 				"grant_type" =>"authorization_code",
 				"code" => $code,
 				"redirect_uri" => $this->url_callback,
 				"client_id"=>$this->client_id,
-				"client_secret"=>$this->secret_id
+				"client_secret"=>$this->client_secret
 		);
 		
 		$curlWrapper->setPostDataUrlEncode($post_data);
@@ -138,7 +128,7 @@ class FranceConnect {
 		
 		require_once(__DIR__."/../ext/Akita_JOSE/JWS.php");
 		$jws = Akita_JOSE_JWS::load($id_token, true);
-		$verify = $jws->verify($this->secret_id);
+		$verify = $jws->verify($this->client_secret);
 		if (! $verify){
 			throw new Exception("Vérification du token : Echec");
 		}
@@ -149,6 +139,7 @@ class FranceConnect {
 	
 	public function getInfoFromFI($access_token){
 		$curlWrapper = new CurlWrapper();
+		$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
 		$curlWrapper->addHeader("Authorization", "Bearer $access_token");
 		$user_info_url = $this->getURLforService("userinfo");
 		$result = $curlWrapper->get($user_info_url);
@@ -172,6 +163,7 @@ class FranceConnect {
 	
 	public function getInfoFromFD($fd_url, $access_token){
 		$curlWrapper = new CurlWrapper();
+		$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
 		$curlWrapper->addHeader("Authorization", "Bearer $access_token");
 		$result = $curlWrapper->get($fd_url);
 		return json_decode($result,true);

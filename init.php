@@ -1,3 +1,4 @@
+<?php
 #    This file is part of the PHP example for FranceConnect
 #
 #    Copyright (C) 2015-2016 Eric Pommateau, Maxime Reyrolle, Arnaud Bétrémieux
@@ -15,7 +16,6 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this example.  If not, see <http://www.gnu.org/licenses/>.
 
-<?php
 session_start();
 
 require_once(__DIR__."/lib/CurlWrapper.class.php");
@@ -25,6 +25,6 @@ require_once(__DIR__."/lib/FDGuichetBreton.class.php");
 
 require_once("LocalSettings.php");
 
-$franceConnect = new FranceConnect($france_connect_base_url, $client_id,$secret_id,$url_callback);
+$franceConnect = new FranceConnect($france_connect_base_url, $client_id,$client_secret,$url_callback);
 
 header("Content-type: text/html; charset=utf-8");

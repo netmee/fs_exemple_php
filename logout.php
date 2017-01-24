@@ -1,3 +1,4 @@
+<?php
 #    This file is part of the PHP example for FranceConnect
 #
 #    Copyright (C) 2015-2016 Eric Pommateau, Maxime Reyrolle, Arnaud Bétrémieux
@@ -14,8 +15,6 @@
 #
 #    You should have received a copy of the GNU General Public License
 #    along with this example.  If not, see <http://www.gnu.org/licenses/>.
-
-<?php
 
 require_once("init.php");
 
