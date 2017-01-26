@@ -25,7 +25,7 @@ include("init.php");
 </head>
 
 <body>
-<h1>WS France Connect</h1>
+<h1>Exemple de fournisseur de service FranceConnect en PHP</h1>
 <div style='text-align: center'>
 
 <?php if (isset($_SESSION['user_info'])) : ?>
@@ -33,7 +33,7 @@ include("init.php");
 Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_SESSION['user_info']['family_name'] ?></b>
 &nbsp;-&nbsp;<a href='logout.php'>Déconnexion</a>
 
-<h2>Données issues de la connexion France Connect</h2>
+<h2>Données issues de la connexion FranceConnect</h2>
 <table>
 	<?php foreach($_SESSION['user_info'] as $key=>$value): ?>
 		<tr>
@@ -63,9 +63,7 @@ Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_
 </table>
 <?php else :?>
 <form action='authentication.php' method='post'>
-
-	<input type='submit' value='Authentification France Connect'/>
-
+	<input type="submit" value="S'identifier avec France Connect" style="background:url(fc_bouton_alt1_v2.png) no-repeat; width:224px; height:56px; font-size:0; border:0; cursor:pointer;"/>
 </form>
 <?php endif;?>
 </div>
