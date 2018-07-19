@@ -20,10 +20,11 @@
 $france_connect_base_url = "https://fcp.integ01.dev-franceconnect.fr/api/v1/";
 
 /* Client ID */
-$client_id = "A REMPLIR";
+$client_id = getenv('FC_CLIENT_ID'));
 
 /* Secret ID */
-$client_secret = "A REMPLIR";
+$client_secret = getenv('FC_CLIENT_SECRET'));
 
 /* URL vers laquel est redirigé l'utilisateur après le login France Connect */
-$url_callback = "http://localhost:2020/callback.php";
+//$url_callback = "http://localhost:2020/callback.php";
+$url_callback = getenv('FC_URL_CALLBACK'));
