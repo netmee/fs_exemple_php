@@ -92,7 +92,7 @@ class FranceConnect {
 	
 	private function getAccessToken($code){
 		$curlWrapper = new CurlWrapper();
-		$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
+		//$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
 		
 		$post_data = array(
 				"grant_type" =>"authorization_code",
