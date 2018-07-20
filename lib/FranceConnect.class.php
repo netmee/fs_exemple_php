@@ -172,7 +172,12 @@ class FranceConnect {
 	}
 	
 	private function getURLforService($service){
-		return trim($this->france_connect_base_url,"/")."/$service?";
+		if ($service == "checktoken"){
+			$url = $this->france_connect_checktoken_url;
+		} else {
+			$url = trim($this->france_connect_base_url,"/")."/$service?";
+		}
+		return $url;
 	}
 	
 	private function getRandomToken(){
