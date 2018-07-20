@@ -92,6 +92,31 @@ class FranceConnect {
 		return true;
 	}
 	
+	private function checkToken($accesstoken){
+		$curlWrapper = new CurlWrapper();
+		//$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
+		
+		$post_data = array(
+				"token" => $accesstoken,
+		);
+		
+		$curlWrapper->setPostDataUrlEncode($post_data);
+		$checktoken_url = $this->getURLforService("checktoken");
+		
+		$result = $curlWrapper->get($checktoken_url);
+		if ($curlWrapper->getHTTPCode() != 200){
+			if (! $result){
+				throw new Exception($curlWrapper->getLastError());
+			} 
+			$checktoken_result_array = json_decode($result,true);
+			throw new Exception($checktoken_result_array['error']);
+		}
+		
+		$checktoken_result_array = json_decode($result,true);
+
+		return $checktoken_result_array;	
+	}
+	
 	private function getAccessToken($code){
 		$curlWrapper = new CurlWrapper();
 		//$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
