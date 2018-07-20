@@ -92,12 +92,12 @@ class FranceConnect {
 		return true;
 	}
 	
-	private function checkToken($accesstoken){
+	public function checktoken($access_token){
 		$curlWrapper = new CurlWrapper();
 		//$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
 		
 		$post_data = array(
-				"token" => $accesstoken,
+				"token" => $access_token,
 		);
 		
 		$curlWrapper->setPostDataUrlEncode($post_data);
