@@ -21,6 +21,8 @@ require_once("init.php");
 $_SESSION['user_info'] = $franceConnect->callback();
 $access_token = $_SESSION['user_info']['access_token']; 
 
+$_SESSION['checktoken_info'] = $franceConnect->checktoken($access_token);
+
 //$fdTest = new FDTest($franceConnect);
 //SESSION['fd_user_info'][$fdTest->getName()] = $fdTest->getInfo($access_token);
 
