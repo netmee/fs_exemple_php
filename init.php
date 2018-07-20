@@ -25,6 +25,6 @@ require_once(__DIR__."/lib/FDGuichetBreton.class.php");
 
 require_once("LocalSettings.php");
 
-$franceConnect = new FranceConnect($france_connect_base_url, $client_id,$client_secret,$url_callback);
+$franceConnect = new FranceConnect($france_connect_base_url, $france_connect_checktoken_url, $client_id,$client_secret,$url_callback);
 
 header("Content-type: text/html; charset=utf-8");
