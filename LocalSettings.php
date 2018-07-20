@@ -18,6 +18,7 @@
 
 /* URL de base de l'API France Connect */
 $france_connect_base_url = "https://fcp.integ01.dev-franceconnect.fr/api/v1/";
+$france_connect_base_url_checktoken = "https://fca.int-cw.dev-franceconnect.fr/api/v1/checktoken";
 
 /* Client ID */
 $client_id = getenv('FC_CLIENT_ID');
