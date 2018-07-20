@@ -22,12 +22,14 @@ class FranceConnect {
 	const OPENID_SESSION_NONCE = "open_id_session_nonce";
 	
 	private $france_connect_base_url;
+	private $france_connect_checktoken_url;
 	private $client_id;
 	private $client_secret;
 	private $url_callback;
 	
-	public function __construct($france_connect_base_url,$client_id,$client_secret, $url_callback){
+	public function __construct($france_connect_base_url,$france_connect_checktoken_url,$client_id,$client_secret, $url_callback){
 		$this->france_connect_base_url = $france_connect_base_url;
+		$this->france_connect_checktoken_url = $france_connect_checktoken_url;
 		$this->client_id = $client_id;
 		$this->client_secret = $client_secret;
 		$this->url_callback = $url_callback;
