@@ -44,23 +44,6 @@ Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_
 </table>
 <h2>Données issues des fournisseurs de données </h2>
 
-<table>
-	<tr>
-		<th>Fournisseur de données</th>
-		<th>Type de données</th>
-		<th>Valeur</th>
-	</tr>
-		<?php foreach($_SESSION['fd_user_info'] as $fd => $info): ?>
-			<?php foreach($info as $key => $value): ?>
-				<tr>
-					<td><?php echo $fd ?></td>
-					<td><?php echo $key ?></td>
-					<td><?php echo $value ?></td>
-				</tr>
-			<?php endforeach;?>
-		<?php endforeach;?>
-	
-</table>
 <?php else :?>
 <form action='authentication.php' method='post'>
 	<input type="submit" value="S'identifier avec France Connect" style="background:url(fc_bouton_alt1_v2.png) no-repeat; width:224px; height:56px; font-size:0; border:0; cursor:pointer;"/>
