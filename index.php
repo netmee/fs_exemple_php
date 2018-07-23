@@ -48,7 +48,7 @@ Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_
 	<?php foreach($_SESSION['checktoken_info'] as $key=>$value): ?>
 		<tr>
 			<th><?php echo $key ?></th>
-			<td><?php if ((is_array($value)) : ?>
+			<td><?php if (is_array($value)) : ?>
 				<?php foreach($value as $k=>$v): ?>
 					<?php echo $v ?>,
 				<?php endforeach;?>
