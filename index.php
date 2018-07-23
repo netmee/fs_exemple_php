@@ -26,7 +26,6 @@ include("init.php");
 
 <body>
 <h1>Exemple de fournisseur de service FranceConnect en PHP</h1>
-<div style='text-align: center'>
 
 <?php if (isset($_SESSION['user_info'])) : ?>
 
@@ -48,10 +47,11 @@ Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_
 <?php print_r($_SESSION['checktoken_info']);?>
 </pre>
 <?php else :?>
+<div style='text-align: center'>
 <form action='authentication.php' method='post'>
 	<input type="submit" value="S'identifier avec France Connect" style="background:url(fc_bouton_alt1_v2.png) no-repeat; width:224px; height:56px; font-size:0; border:0; cursor:pointer;"/>
 </form>
-<?php endif;?>
 </div>
+<?php endif;?>
 </body>
 </html>
