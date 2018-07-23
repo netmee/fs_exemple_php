@@ -44,21 +44,9 @@ Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_
 </table>
 
 <h2>Données issues du checktoken</h2>
-<table>
-	<?php foreach($_SESSION['checktoken_info'] as $key=>$value): ?>
-		<tr>
-			<th><?php echo $key ?></th>
-			<td><?php if (is_array($value)) : ?>
-				<?php foreach($value as $k=>$v): ?>
-					<?php echo $v ?>,
-				<?php endforeach;?>
-			    <?php else :?>
-				<?php echo $value ?>
-			    <?php endif;?>
-			</td>
-		</tr>
-	<?php endforeach;?>
-</table>
+<pre>
+<?php print_r($_SESSION['checktoken_info']);?>
+</pre>
 <?php else :?>
 <form action='authentication.php' method='post'>
 	<input type="submit" value="S'identifier avec France Connect" style="background:url(fc_bouton_alt1_v2.png) no-repeat; width:224px; height:56px; font-size:0; border:0; cursor:pointer;"/>
