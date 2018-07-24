@@ -47,6 +47,14 @@ Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_
 <?php print_r($_SESSION['checktoken_info']);?>
 </pre>
 <?php else :?>
+<h2>Introduction</h2>
+	<p>Ce client de test fournisseur de service illustre le fonctionnement de l'authentification France Connect.</p>
+	<p>Il retourne les données issues du "userinfo" utilisé par les fournisseurs de service et du "checktoken" utilisé par les fournisseurs de données.</p>
+<h2>Prérequis à la connexion</h2>
+	<p>L'authentification doit se faire sur le bouchon du fournisseur d'identité ameli avec les données suivantes :</p>
+	<p>NIR : 1510246102043</p>
+	<p>Mot de passe : 1234</p>
+<h2>Connexion France connect</h2>
 <div style='text-align: center'>
 <form action='authentication.php' method='post'>
 	<input type="submit" value="S'identifier avec France Connect" style="background:url(fc_bouton_alt1_v2.png) no-repeat; width:224px; height:56px; font-size:0; border:0; cursor:pointer;"/>
