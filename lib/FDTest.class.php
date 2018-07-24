@@ -16,21 +16,30 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this example.  If not, see <http://www.gnu.org/licenses/>.
 
-require_once("FournisseurDonnees.class.php");
+class FDTest {
 
-class FDTest extends FournisseurDonnees {
+	private $api_key;
+	private $base_url;
 	
+	public function __construct($api_key, $base_url){
+		$this->api_key = $api_key;
+		$this->base_url = $base_url;
+	}
+
 	public function getName(){
-		return "FD de Test quotient familiale";
+		return "FD de Test";
 	}
 	
-	protected function getFDURL(){
-		return "http://fdp.integ01.dev-franceconnect.fr/quotientFamilial";
+	public function getData($access_token){
+		$curlWrapper = new CurlWrapper();
+		//$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
+		$curlWrapper->addHeader("x-gravitee-api-key", $this->api_key);
+		$curlWrapper->addHeader("Authorization", "Bearer $access_token");
+		$result = $curlWrapper->get($this->getRessourceURL("me"));
+		return json_decode($result, true);
 	}
-	
-	public function getInfo($access_token){
-		$info = parent::getInfo($access_token);
-		return array('quotient' => $info['quotient']) ;
-	}
-	
+
+	private function getRessourceURL($ressource){
+		return trim($this->base_url,"/")."/$ressource";
+	}	
 }

@@ -22,14 +22,12 @@ class FranceConnect {
 	const OPENID_SESSION_NONCE = "open_id_session_nonce";
 	
 	private $france_connect_base_url;
-	private $france_connect_checktoken_url;
 	private $client_id;
 	private $client_secret;
 	private $url_callback;
 	
-	public function __construct($france_connect_base_url,$france_connect_checktoken_url,$client_id,$client_secret, $url_callback){
+	public function __construct($france_connect_base_url,$client_id,$client_secret, $url_callback){
 		$this->france_connect_base_url = $france_connect_base_url;
-		$this->france_connect_checktoken_url = $france_connect_checktoken_url;
 		$this->client_id = $client_id;
 		$this->client_secret = $client_secret;
 		$this->url_callback = $url_callback;
@@ -192,21 +190,8 @@ class FranceConnect {
 		header("Location: $logout_url");
 	}
 	
-	public function getInfoFromFD($fd_url, $access_token){
-		$curlWrapper = new CurlWrapper();
-		$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
-		$curlWrapper->addHeader("Authorization", "Bearer $access_token");
-		$result = $curlWrapper->get($fd_url);
-		return json_decode($result,true);
-	}
-	
 	private function getURLforService($service){
-		//if ($service == "checktoken"){
-		//	$url = $this->france_connect_checktoken_url;
-		//} else {
-			$url = trim($this->france_connect_base_url,"/")."/$service?";
-		//}
-		return $url;
+		return trim($this->france_connect_base_url,"/")."/$service?";
 	}
 	
 	private function getRandomToken(){

@@ -51,9 +51,14 @@ Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_
 	<?php endforeach;?>
 </table>
 
-<h2>Données issues du checktoken</h2>
+<h2>Données issues du checktoken depuis le fournisseur de service</h2>
 <pre>
 <?php print_r($_SESSION['checktoken_info']);?>
+</pre>
+
+<h2>Données issues du checktoken depuis le fournisseur de données</h2>
+<pre>
+<?php print_r($_SESSION['fd_data']);?>
 </pre>
 <?php else :?>
 <h2>Introduction</h2>

@@ -21,10 +21,13 @@ session_start();
 require_once(__DIR__."/lib/CurlWrapper.class.php");
 require_once(__DIR__."/lib/FranceConnect.class.php");
 require_once(__DIR__."/lib/FDTest.class.php");
-require_once(__DIR__."/lib/FDGuichetBreton.class.php");
 
 require_once("LocalSettings.php");
 
-$franceConnect = new FranceConnect($france_connect_base_url, $france_connect_checktoken_url, $client_id,$client_secret,$url_callback);
+/* initialistation france connect */
+$franceConnect = new FranceConnect($france_connect_base_url, $client_id, $client_secret, $url_callback);
+
+/* initialistation du fournisseur de données */
+$fdTest = new FDTest($fd_api_key, $fd_base_url);
 
 header("Content-type: text/html; charset=utf-8");

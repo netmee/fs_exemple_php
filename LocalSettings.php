@@ -16,9 +16,8 @@
 #    You should have received a copy of the GNU General Public License
 #    along with this example.  If not, see <http://www.gnu.org/licenses/>.
 
-/* URL de base de l'API France Connect */
+/* URL de base de l'API France Connect : https://partenaires.franceconnect.gouv.fr/fournisseur-donnees*/
 $france_connect_base_url = "https://fcp.integ01.dev-franceconnect.fr/api/v1/";
-$france_connect_checktoken_url = "https://fca.int-cw.dev-franceconnect.fr/api/v1/checktoken";
 
 /* Client ID */
 $client_id = getenv('FC_CLIENT_ID');
@@ -27,5 +26,8 @@ $client_id = getenv('FC_CLIENT_ID');
 $client_secret = getenv('FC_CLIENT_SECRET');
 
 /* URL vers laquel est redirigé l'utilisateur après le login France Connect */
-//$url_callback = "http://localhost:2020/callback.php";
 $url_callback = getenv('FC_URL_CALLBACK');
+
+/* Paramètres du fournisseur de données */
+$fd_api_key = getenv('FD_API_KEY');
+$fd_base_url = getenv('FD_BASE_URL');

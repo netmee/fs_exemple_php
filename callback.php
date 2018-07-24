@@ -19,8 +19,12 @@
 require_once("init.php");
 
 $_SESSION['user_info'] = $franceConnect->callback();
-$access_token = $_SESSION['user_info']['access_token']; 
 
+/* Appel du fournisseur de données */
+$access_token = $_SESSION['user_info']['access_token'];
+$_SESSION['fd_data'] = $fdTest->getData($access_token);
+
+/* Vérification de l'access token depuis le fournisseur de données */
 $_SESSION['checktoken_info'] = $franceConnect->checktoken($access_token);
 
 //$fdTest = new FDTest($franceConnect);
