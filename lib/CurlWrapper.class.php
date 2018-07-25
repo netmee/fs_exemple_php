@@ -25,14 +25,16 @@ class CurlWrapper {
 	private $postData;
 	private $postFile;
 	private $postFileProperties;
+	private $httpHeaders;
 	
 	public function __construct(){
 		$this->curlHandle = curl_init();
-		$this->setProperties( CURLOPT_RETURNTRANSFER , 1); 
+		$this->setProperties(CURLOPT_RETURNTRANSFER , 1); 
 		$this->setProperties(CURLOPT_FOLLOWLOCATION, 1);
 		$this->setProperties(CURLOPT_MAXREDIRS, 5);
 		$this->postFile = array();
 		$this->postData = array();
+		$this->httpHeaders = array();
 	}
 
 	public function __destruct(){
@@ -45,7 +47,8 @@ class CurlWrapper {
 	}
 	
 	public function addHeader($name,$value){
-		$this->setProperties(CURLOPT_HTTPHEADER, array("$name: $value"));
+		$this->httpHeaders[] = "$name: $value";
+		$this->setProperties(CURLOPT_HTTPHEADER, $this->httpHeaders[]);
 	}
 	
 	public function getLastError(){
@@ -58,22 +61,22 @@ class CurlWrapper {
 	
 	public function setAccept($format){
 		$curlHttpHeader[] = "Accept: $format";
-		$this->setProperties( CURLOPT_HTTPHEADER, $curlHttpHeader);
+		$this->setProperties(CURLOPT_HTTPHEADER, $curlHttpHeader);
 	}
 	
 	public function dontVerifySSLCACert(){
-		$this->setProperties( CURLOPT_SSL_VERIFYHOST , 0 );
+		$this->setProperties(CURLOPT_SSL_VERIFYHOST , 0 );
 		$this->setProperties(CURLOPT_SSL_VERIFYPEER, 0);
 	}
 	
 	public function setServerCertificate($serverCertificate){
-		$this->setProperties( CURLOPT_CAINFO ,$serverCertificate ); 
+		$this->setProperties(CURLOPT_CAINFO ,$serverCertificate ); 
 	}
 	
 	public function setClientCertificate($clientCertificate,$clientKey,$clientKeyPassword)	{
-		$this->setProperties( CURLOPT_SSLCERT, $clientCertificate);
-		$this->setProperties( CURLOPT_SSLKEY, $clientKey);
-		$this->setProperties( CURLOPT_SSLKEYPASSWD,$clientKeyPassword );
+		$this->setProperties(CURLOPT_SSLCERT, $clientCertificate);
+		$this->setProperties(CURLOPT_SSLKEY, $clientKey);
+		$this->setProperties(CURLOPT_SSLKEYPASSWD,$clientKeyPassword );
 	}
 	
 	public function get($url){
