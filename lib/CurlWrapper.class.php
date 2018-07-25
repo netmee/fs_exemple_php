@@ -99,7 +99,7 @@ class CurlWrapper {
 		error_log("---------------- CONNEXION ----------------\n", 3, __DIR__."/../debug.log");
 		error_log(print_r($debug, TRUE) . "\n", 3, __DIR__."/../debug.log");
 		error_log("---------------- REQUEST ------------------\n", 3, __DIR__."/../debug.log");
-		error_log(print_r(curl_getinfo($this->curlHandle)) . "\n", 3, __DIR__."/../debug.log");
+		error_log(print_r(var_dump(curl_getinfo($this->curlHandle))) . "\n", 3, __DIR__."/../debug.log");
 		error_log("################ END CURL INFO ############\n", 3, __DIR__."/../debug.log");
 		
 		$this->lastError = curl_error($this->curlHandle);
