@@ -33,7 +33,7 @@ include("init.php");
 
 		<style>
 			html {
-			    font-family: sans-serif;
+			    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
 			}
         </style>
 	<title>Fournisseur de service France-Connect</title>
