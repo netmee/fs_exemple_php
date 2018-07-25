@@ -48,7 +48,7 @@ class CurlWrapper {
 	
 	public function addHeader($name,$value){
 		$this->httpHeaders[] = "$name: $value";
-		$this->setProperties(CURLOPT_HTTPHEADER, $this->httpHeaders[]);
+		$this->setProperties(CURLOPT_HTTPHEADER, $this->httpHeaders);
 	}
 	
 	public function getLastError(){
