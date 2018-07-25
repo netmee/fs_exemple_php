@@ -21,14 +21,8 @@ require_once("init.php");
 $_SESSION['user_info'] = $franceConnect->callback();
 
 /* Appel du fournisseur de données */
-/* initialistation du fournisseur de données */
-$fdTest = new FDTest($fd_api_key, $fd_base_url);
 $access_token = $_SESSION['user_info']['access_token'];
-
-error_log(print_r("api_key : " . $fd_api_key, TRUE), 3, __DIR__."/../debug.log");
-error_log(print_r("fd_base_url : " . $fd_base_url, TRUE), 3, __DIR__."/../debug.log");
 error_log(print_r("access_token : " . $access_token, TRUE), 3, __DIR__."/../debug.log");
-
 $_SESSION['fd_data'] = $fdTest->getData($access_token);
 
 /* Vérification de l'access token depuis le fournisseur de données */

@@ -27,4 +27,10 @@ require_once("LocalSettings.php");
 /* initialistation france connect */
 $franceConnect = new FranceConnect($france_connect_base_url, $client_id, $client_secret, $url_callback);
 
+/* initialistation du fournisseur de données */
+error_log(print_r("fd_api_key : " . $fd_api_key, TRUE), 3, __DIR__."/../debug.log");
+error_log(print_r("fd_base_url : " . $fd_base_url, TRUE), 3, __DIR__."/../debug.log");
+$fdTest = new FDTest($fd_api_key, $fd_base_url);
+
+
 header("Content-type: text/html; charset=utf-8");
