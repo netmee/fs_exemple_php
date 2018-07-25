@@ -18,19 +18,25 @@
 
 include("init.php");
 ?>
-
+<!DOCTYPE html>
 <html>
-<head>
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-8733929-16"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+	<head>
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-8733929-16"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){dataLayer.push(arguments);}
+		  gtag('js', new Date());
 
-  gtag('config', 'UA-8733929-16');
-</script>
-<title>Fournisseur de service France-Connect</title>
+		  gtag('config', 'UA-8733929-16');
+		</script>
+
+		<style>
+			html {
+			    font-family: sans-serif;
+			}
+        </style>
+	<title>Fournisseur de service France-Connect</title>
 </head>
 
 <body>
@@ -53,17 +59,18 @@ Identifié en tant que <b><?php echo $_SESSION['user_info']['given_name']." ".$_
 
 <h2>Données issues du checktoken depuis le fournisseur de service</h2>
 <pre>
-<?php print_r(json_encode($_SESSION['checktoken_info']));?>
+<?php print_r(json_encode($_SESSION['checktoken_info'], JSON_PRETTY_PRINT));?>
 </pre>
 
 <h2>Données issues du checktoken depuis le fournisseur de données</h2>
 <pre>
-<?php print_r(json_encode($_SESSION['fd_data']));?>
+<?php print_r(json_encode($_SESSION['fd_data'], JSON_PRETTY_PRINT));?>
 </pre>
 <?php else :?>
 <h2>Introduction</h2>
 	<p>Ce client de test fournisseur de service illustre le fonctionnement de l'authentification France Connect.</p>
 	<p>Il retourne les données issues du "userinfo" utilisé par les fournisseurs de service et du "checktoken" utilisé par les fournisseurs de données.</p>
+	<p><a href="https://github.com/netmee/fs_exemple_php">Le code source est disponible sur github.</a></p>
 <h2>Prérequis à la connexion</h2>
 	<p>L'authentification doit se faire sur le bouchon du fournisseur d'identité ameli avec les données suivantes :</p>
 	<p>NIR : 1510246102043</p>
