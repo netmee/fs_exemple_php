@@ -26,12 +26,17 @@ class CurlWrapper {
 	private $postFile;
 	private $postFileProperties;
 	private $httpHeaders;
+	private $out;
 	
 	public function __construct(){
+		ob_start();
 		$this->curlHandle = curl_init();
+		$this->out = fopen('php://output', 'w');
 		$this->setProperties(CURLOPT_RETURNTRANSFER , 1); 
 		$this->setProperties(CURLOPT_FOLLOWLOCATION, 1);
 		$this->setProperties(CURLOPT_MAXREDIRS, 5);
+		$this->setProperties(CURLOPT_VERBOSE, true);
+		$this->setProperties(CURLOPT_STDERR, $this->out);
 		$this->postFile = array();
 		$this->postData = array();
 		$this->httpHeaders = array();
@@ -84,9 +89,12 @@ class CurlWrapper {
 		if ($this->postData || $this->postFile ){
 			$this->curlSetPostData();
 		}
-		//curl_setopt($this->curlHandle, CURLINFO_HEADER_OUT, true);
-		error_log(print_r(curl_getinfo($this->curlHandle, CURLINFO_PRIVATE), TRUE) . "\n", 3, __DIR__."/../debug.log");
+
 		$output = curl_exec($this->curlHandle);
+
+		fclose($this->out);  
+		$debug = ob_get_clean();
+		error_log(print_r($debug, TRUE) . "\n", 3, __DIR__."/../debug.log");
 
 		//print_r(curl_getinfo($this->curlHandle,CURLINFO_HEADER_OUT));
 		
@@ -94,7 +102,7 @@ class CurlWrapper {
 		if ($this->lastError){
 			$this->lastError = "Erreur de connexion au serveur : " . $this->lastError;
 			return false;
-		}	
+		}
 		return $output;
 	}
 	
