@@ -101,7 +101,7 @@ class FranceConnect {
 		$curlWrapper->setPostDataUrlEncode($post_data);
 		$checktoken_url = $this->getURLforService("checktoken");
 		
-		error_log(print_r($curlWrapper, TRUE), 3, __DIR__."/../debug.log");
+		//error_log(print_r($curlWrapper, TRUE), 3, __DIR__."/../debug.log");
 		
 		$result = $curlWrapper->get($checktoken_url);
 		/*if ($curlWrapper->getHTTPCode() != 200){
@@ -132,7 +132,7 @@ class FranceConnect {
 		$curlWrapper->setPostDataUrlEncode($post_data);
 		$token_url = $this->getURLforService("token");
 		
-		error_log(print_r($curlWrapper, TRUE), 3, __DIR__."/../debug.log");
+		//error_log(print_r($curlWrapper, TRUE), 3, __DIR__."/../debug.log");
 		
 		$result = $curlWrapper->get($token_url);
 		if ($curlWrapper->getHTTPCode() != 200){

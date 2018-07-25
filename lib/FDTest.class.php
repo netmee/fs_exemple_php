@@ -32,9 +32,11 @@ class FDTest {
 	
 	public function getData($access_token){
 		$curlWrapper = new CurlWrapper();
-		//$curlWrapper->setServerCertificate(__DIR__."/../certificates.pem");
 		$curlWrapper->addHeader("x-gravitee-api-key", $this->api_key);
 		$curlWrapper->addHeader("Authorization", "Bearer $access_token");
+
+		error_log(print_r($curlWrapper, TRUE), 3, __DIR__."/../debug.log");
+		
 		$result = $curlWrapper->get($this->getRessourceURL("me"));
 		return json_decode($result, true);
 	}

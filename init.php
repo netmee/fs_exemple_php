@@ -29,5 +29,6 @@ $franceConnect = new FranceConnect($france_connect_base_url, $client_id, $client
 
 /* initialistation du fournisseur de données */
 $fdTest = new FDTest($fd_api_key, $fd_base_url);
+error_log(print_r($fdTest, TRUE), 3, __DIR__."/../debug.log");
 
 header("Content-type: text/html; charset=utf-8");
