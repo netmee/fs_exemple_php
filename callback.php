@@ -22,7 +22,6 @@ $_SESSION['user_info'] = $franceConnect->callback();
 
 /* Appel du fournisseur de données */
 $access_token = $_SESSION['user_info']['access_token'];
-error_log(print_r("access_token : " . $access_token, TRUE) . "\n", 3, __DIR__."/debug.log");
 $_SESSION['fd_data'] = $fdTest->getData($access_token);
 
 /* Vérification de l'access token depuis le fournisseur de données */

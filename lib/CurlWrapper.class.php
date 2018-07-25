@@ -86,6 +86,7 @@ class CurlWrapper {
 		}
 		//curl_setopt($this->curlHandle, CURLINFO_HEADER_OUT, true);
 		
+		error_log(print_r(curl_getinfo($this->curlHandle), TRUE) . "\n", 3, __DIR__."/debug.log");
 		$output = curl_exec($this->curlHandle);
 
 		//print_r(curl_getinfo($this->curlHandle,CURLINFO_HEADER_OUT));
