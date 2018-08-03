@@ -25,9 +25,11 @@ class FranceConnect {
 	private $client_id;
 	private $client_secret;
 	private $url_callback;
+	private $url_checktoken;
 	
-	public function __construct($france_connect_base_url,$client_id,$client_secret, $url_callback){
+	public function __construct($france_connect_base_url,$client_id,$client_secret, $url_callback, $url_checktoken){
 		$this->france_connect_base_url = $france_connect_base_url;
+		$this->url_checktoken = $url_checktoken;
 		$this->client_id = $client_id;
 		$this->client_secret = $client_secret;
 		$this->url_callback = $url_callback;
@@ -191,18 +193,22 @@ class FranceConnect {
 	}
 	
 	private function getURLforService($service){
-		return trim($this->france_connect_base_url,"/")."/$service?";
+	    if ($service == "checktoken") {
+	        return $this->url_checktoken;
+        } else {
+            return trim($this->france_connect_base_url,"/")."/$service?";
+        }
 	}
 	
 	private function getRandomToken(){
 		return sha1(mt_rand(0,mt_getrandmax()));
 	}
 
-	private function recupGET($variable_name,$default=false){
-		if (! isset($_GET[$variable_name])){
-			return $default;
-		}
-		return $_GET[$variable_name];
-	}
-	
+	private function recupGET($variable_name,$default=false)
+    {
+        if (!isset($_GET[$variable_name])) {
+            return $default;
+        }
+        return $_GET[$variable_name];
+    }
 }

@@ -25,7 +25,7 @@ require_once(__DIR__."/lib/FDTest.class.php");
 require_once("LocalSettings.php");
 
 /* initialistation france connect */
-$franceConnect = new FranceConnect($france_connect_base_url, $client_id, $client_secret, $url_callback);
+$franceConnect = new FranceConnect($france_connect_base_url, $client_id, $client_secret, $url_callback, $url_checktoken);
 
 /* initialistation du fournisseur de données */
 //error_log(print_r("fd_api_key : " . $fd_api_key, TRUE) . "\n", 3, __DIR__."/debug.log");

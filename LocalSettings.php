@@ -28,6 +28,9 @@ $client_secret = getenv('FC_CLIENT_SECRET');
 /* URL vers laquel est redirigé l'utilisateur après le login France Connect */
 $url_callback = getenv('FC_URL_CALLBACK');
 
+/* URL de validation de l'access token */
+$url_checktoken = getenv('FC_URL_CHECKTOKEN');
+
 /* Paramètres du fournisseur de données */
 $fd_api_key = getenv('FD_API_KEY');
 $fd_base_url = getenv('FD_BASE_URL');
