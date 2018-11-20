@@ -22,7 +22,10 @@ $_SESSION['user_info'] = $franceConnect->callback();
 $access_token = $_SESSION['user_info']['access_token']; 
 
 $fdTest = new FDTest($franceConnect);
-$_SESSION['fd_user_info'][$fdTest->getName()] = $fdTest->getInfo($access_token);
+for ($i = 1; $i <= 10; $i++) {
+    $result = $fdTest->getInfo($access_token);
+}
+$_SESSION['fd_user_info'][$fdTest->getName()] = $result;
 
 $fdGuichet = new FDGuichetBreton($franceConnect);
 $_SESSION['fd_user_info'][$fdGuichet->getName()] = $fdGuichet->getInfo($access_token);
