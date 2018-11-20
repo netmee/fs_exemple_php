@@ -22,7 +22,12 @@ $_SESSION['user_info'] = $franceConnect->callback();
 
 /* Appel du fournisseur de données */
 $access_token = $_SESSION['user_info']['access_token'];
-$_SESSION['fd_data'] = $fdTest->getData($access_token);
+
+/* Test des limites d'appel */
+for ($i = 1; $i <= 10; $i++) {
+    $result = $fdTest->getInfo($access_token);
+}
+$_SESSION['fd_data'] = $result;
 
 /* Vérification de l'access token depuis le fournisseur de données */
 $_SESSION['checktoken_info'] = $franceConnect->checktoken($access_token);
